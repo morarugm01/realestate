@@ -1,13 +1,11 @@
 <script setup>
-    import { Link } from '@inertiajs/vue3'
+import { Link } from '@inertiajs/vue3'
 </script>
 
 <template>
-    <div class="flex flex-column ">
+    <div class="p-2">
         <div class="flex flex-row space-x-2">
-            <Link href="/">Homepage</Link>
-            <Link href="/hello">Show page</Link>
         </div>
+        <slot></slot>
     </div>
-    <slot></slot>
 </template>
