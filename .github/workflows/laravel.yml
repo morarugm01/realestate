@@ -19,9 +19,6 @@ jobs:
       - name: Run composer install
         run: composer install -n --prefer-dist
  
-      - name: Run composer install
-        run: composer install -n --prefer-dist
- 
       - name: Run NPM install # [tl! add:start]
         run: npm install
  
