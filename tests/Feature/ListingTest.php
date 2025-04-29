@@ -8,6 +8,14 @@ use Tests\TestCase;
 
 class ListingTest extends TestCase
 {
+
+    use RefreshDatabase;
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+    }
+
     /**test */
     public function test_example(): void
     {
