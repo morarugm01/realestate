@@ -1,4 +1,3 @@
-version: '3.8'
 
 services:
   app:
@@ -9,11 +8,14 @@ services:
     restart: unless-stopped
     working_dir: /var/www
     volumes:
-      - .:/var/www
+      - .:/var/www:cached
+      - ./public:/var/www/public:cached
     networks:
       - app-network
     depends_on:
       - mysql
+    ports:
+      - "5173:5173"
 
   nginx:
     image: nginx:alpine
@@ -22,7 +24,7 @@ services:
     ports:
       - "8000:80"
     volumes:
-      - .:/var/www
+      - .:/var/www:cached
       - ./docker/nginx/conf.d:/etc/nginx/conf.d
     depends_on:
       - app
@@ -35,10 +37,9 @@ services:
     restart: unless-stopped
     environment:
       MYSQL_DATABASE: realestate
-      # MYSQL_ROOT_PASSWORD: secret123
-
+      MYSQL_ROOT_PASSWORD: secret123
     ports:
-      - "3307:3306"
+      - "3306:3306"
     volumes:
       - mysql-data:/var/lib/mysql
     networks:
