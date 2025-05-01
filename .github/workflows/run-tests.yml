@@ -33,4 +33,8 @@ jobs:
         run: touch database/database.sqlite # [tl! add:end]
  
       - name: Run tests
+<<<<<<< HEAD
         run: php artisan test
+=======
+        run: php artisan test
+>>>>>>> f72dbf665583e09a383a7a778d32595e9ede031f
