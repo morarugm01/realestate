@@ -31,11 +31,9 @@ WORKDIR /var/www
 # Copy Laravel source code
 COPY . .
 
-# Install PHP dependencies
-RUN composer install --no-dev --prefer-dist
-
 # Set permissions
 RUN chown -R www-data:www-data /var/www/storage /var/www/bootstrap/cache
 
-EXPOSE 9000
-CMD bash -c "php-fpm & npm run dev"
+EXPOSE 9000 5173
+
+CMD bash -c "composer install --no-dev --prefer-dist && npm install && npm run dev & php-fpm"
