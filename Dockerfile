@@ -38,4 +38,4 @@ RUN composer install --no-dev --prefer-dist
 RUN chown -R www-data:www-data /var/www/storage /var/www/bootstrap/cache
 
 EXPOSE 9000
-CMD ["php-fpm"]
+CMD bash -c "php-fpm & npm run dev"
